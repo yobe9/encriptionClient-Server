@@ -22,9 +22,8 @@ class myThread (threading.Thread):
        self.port = port
        self.cipher = cipher
    def run(self):
-
-       time.sleep(int(self.givenRound) * 5)
-       print("in run")
+       #sending the message after 62 seconds * round to the server
+       time.sleep(int(self.givenRound) * 62)
        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
        s.sendto(self.cipher, (self.ip, int(self.port)))
        s.close()
@@ -139,9 +138,8 @@ if __name__ == '__main__':
         targetServerIP = serversCopy[0][0]
         targetServerPort = serversCopy[0][1]
         givenRound = message[2]
-        print(targetServerIP, targetServerPort, givenRound, ciphertext)
         #sending the information to the server according to round, with thread so we handle all the message at once
-        thread = myThread("1", targetServerIP, targetServerPort, ciphertext)
+        thread = myThread(givenRound, targetServerIP, targetServerPort, ciphertext)
         thread.start()
 
 
