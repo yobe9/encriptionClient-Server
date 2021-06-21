@@ -24,8 +24,9 @@ class myThread (threading.Thread):
    def run(self):
        #sending the message after 62 seconds * round to the server
        time.sleep(int(self.givenRound) * 62)
-       s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-       s.sendto(self.cipher, (self.ip, int(self.port)))
+       s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+       s.connect((self.ip, int(self.port)))
+       s.send(self.cipher)
        s.close()
 
 
@@ -66,6 +67,7 @@ if __name__ == '__main__':
         k = base64.urlsafe_b64encode(kdf.derive(password))
         f = Fernet(k)
         data = f.encrypt(info)
+
         #getting out the port and convert to bytes format
         bobPort = int(message[6])
         bobPort = bobPort.to_bytes(2, 'big')
