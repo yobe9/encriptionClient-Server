@@ -1,16 +1,13 @@
-# id1 name1, id2 name2
+# Gal Ben Arush, 208723791, Yoav Berger, 313268393
 import socket
 import sys
 import base64
-import os
 from cryptography.fernet import Fernet
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
-from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.serialization import load_pem_public_key
 from cryptography.hazmat.primitives.asymmetric import padding
-from cryptography.hazmat.primitives.serialization import load_pem_private_key
 import threading
 import time
 
@@ -143,6 +140,7 @@ if __name__ == '__main__':
         #sending the information to the server according to round, with thread so we handle all the message at once
         thread = myThread(givenRound, targetServerIP, targetServerPort, ciphertext)
         thread.start()
+
 
 
 

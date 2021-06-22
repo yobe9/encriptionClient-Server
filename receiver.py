@@ -1,8 +1,7 @@
-# id1 name, id2 name
+# Gal Ben Arush, 208723791, Yoav Berger, 313268393
 
 import socket
 import sys
-import time
 from cryptography.fernet import Fernet
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
